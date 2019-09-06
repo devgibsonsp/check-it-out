@@ -19,7 +19,7 @@ const Login = (props) => {
               placeholder='Password'
               type='password'
             />
-            <Button color='teal' fluid size='large' onClick={()=>props.history.push('/users')}>
+            <Button color='teal' fluid size='large' onClick={()=>props.history.push('/main')}>
               Login
           </Button>
           </Segment>
@@ -32,4 +32,4 @@ const Login = (props) => {
   )
 }
 
-export default Login
+export default Login;
