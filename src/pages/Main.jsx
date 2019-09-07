@@ -1,49 +1,72 @@
-import React from 'react';
-import { Grid, Tab, Button, Header, Segment,Menu } from 'semantic-ui-react';
-import '../styles/main.css';
+import React, { useState } from 'react';
+import { 
+  Grid, 
+  Tab, 
+  Button, 
+  Header, 
+  Segment,
+  Menu,
+  Input,
+} from 'semantic-ui-react';
+import CodeReviews from './CodeReviews/CodeReviews';
 
 const Main = (props) => {
+  const [activeItem, setActiveItem] = useState({})
+
+  const handleItemClick = (e, { name }) => setActiveItem({ tab: name });
+
+  console.log(activeItem);
+
+  /**
+   * Navigation Header
+   */
+  const navHeader = () => (
+    <Grid.Column>
+      <Menu>
+        <Menu.Item
+          header
+          name='checkItOut'
+          onClick={handleItemClick}
+        />
+        <Menu.Item
+          name='myQuestions'
+          active={activeItem.tab === 'myQuestions'}
+          onClick={handleItemClick}
+        />
+        <Menu.Item
+          name='popularQuestions'
+          active={activeItem.tab === 'popularQuestions'}
+          onClick={handleItemClick}
+        />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' />
+          </Menu.Item>
+          <Menu.Item
+            icon='setting'
+            name='Account'
+            active={activeItem.tab === 'logout'}
+            onClick={handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu>
+    </Grid.Column >
+  )
+
   return (
-
-      <Grid stackable>
-        <Grid.Row className='main-header'>
-          <Grid.Column >
-            <Header  as='h1'>Check-It-Out!</Header>
-          </Grid.Column >
-        </Grid.Row>
-      <Grid.Row className='main-header-row'>
-        <Grid.Column>
-          <Menu pointing secondary>
-            <Menu.Item
-              name='home'
-              //active={activeItem === 'home'}
-             // onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='messages'
-             // active={activeItem === 'messages'}
-              //onClick={this.handleItemClick}
-            />
-            <Menu.Item
-              name='friends'
-              //active={activeItem === 'friends'}
-              //onClick={this.handleItemClick}
-            />
-            <Menu.Menu position='right'>
-              <Menu.Item
-                name='logout'
-                //active={activeItem === 'logout'}
-               // onClick={this.handleItemClick}
-              />
-            </Menu.Menu>
-          </Menu>
-
-        </Grid.Column >
+    <Grid stackable columns='equal'>
+      <Grid.Row>
+        {navHeader()}
       </Grid.Row>
-  </Grid>
+      <Grid.Row>
+        <CodeReviews/>
+      </Grid.Row>
+    </Grid>
 
   )
 
 }
 
 export default Main;
+
+//
