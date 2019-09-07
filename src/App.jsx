@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
 import { Button } from 'semantic-ui-react';
 import Login from './pages/Login';
+import Main from './pages/Main';
+import './styles/main.css';
 const App = () => {
 
   function Users() {
@@ -16,7 +17,7 @@ const App = () => {
             exact 
             render={ (props) => <Login {...props} />}
           />
-          <Route path="/users/" component={Users} />
+          <Route path="/main/" component={Main} />
       </Router>
     </React.Fragment>
   );
