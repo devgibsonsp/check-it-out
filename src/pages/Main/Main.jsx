@@ -1,14 +1,33 @@
 import React, { useState } from 'react';
 import { 
   Grid, 
-  Tab, 
-  Button, 
-  Header, 
-  Segment,
   Menu,
   Input,
+  Dropdown,
+
+  Button, Header, Image, Modal
+
 } from 'semantic-ui-react';
-import CodeReviews from './CodeReviews/CodeReviews';
+import CodeReviews from '../CodeReviews/CodeReviews';
+
+// const ModalModalExample = () => (
+//   <Modal trigger={<Button>Show Modal</Button>}>
+//     <Modal.Header>Select a Photo</Modal.Header>
+//     <Modal.Content image>
+//       <Image wrapped size='medium' src='/images/avatar/large/rachel.png' />
+//       <Modal.Description>
+//         <Header>Default Profile Image</Header>
+//         <p>
+//           We've found the following gravatar image associated with your e-mail
+//           address.
+//         </p>
+//         <p>Is it okay to use this photo?</p>
+//       </Modal.Description>
+//     </Modal.Content>
+//   </Modal>
+// )
+
+
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
@@ -32,6 +51,7 @@ const Main = (props) => {
           name='myQuestions'
           active={activeItem.tab === 'myQuestions'}
           onClick={handleItemClick}
+          icon='orange exclamation circle'
         />
         <Menu.Item
           name='popularQuestions'
@@ -42,12 +62,12 @@ const Main = (props) => {
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
-          <Menu.Item
-            icon='setting'
-            name='Account'
-            active={activeItem.tab === 'logout'}
-            onClick={handleItemClick}
-          />
+          <Dropdown icon='setting' item text='Settings'>
+            <Dropdown.Menu>
+              <Dropdown.Item icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>props.history.push('/')} icon='sign out' text='Sign Out' />
+            </Dropdown.Menu>
+          </Dropdown>
         </Menu.Menu>
       </Menu>
     </Grid.Column >

@@ -53,7 +53,7 @@ const CommentViewer = (props) => {
   return (
     <React.Fragment>
         <Segment.Group raised>
-            <Segment raised attached>Comments</Segment>
+            <Segment>Comments</Segment>
             <Segment>
               {fakeChat()}
             </Segment>
@@ -62,7 +62,7 @@ const CommentViewer = (props) => {
             <Input
                 action={{
                     color: 'green',
-                    icon: 'plus',
+                    icon: 'send',
                   }}
             />
             </Segment>
