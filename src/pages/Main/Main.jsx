@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Grid, 
   Menu,
@@ -9,6 +9,8 @@ import {
 
 } from 'semantic-ui-react';
 import CodeReviews from '../CodeReviews/CodeReviews';
+
+import axios from 'axios';
 
 // const ModalModalExample = () => (
 //   <Modal trigger={<Button>Show Modal</Button>}>
@@ -31,10 +33,24 @@ import CodeReviews from '../CodeReviews/CodeReviews';
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
-
+  const [test, setTest] = useState({})
   const handleItemClick = (e, { name }) => setActiveItem({ tab: name });
 
   console.log(activeItem);
+
+  async function getTest() {
+    try {
+      const response = await axios.get('/quotes');
+      console.log("API response",response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getTest();
+    console.log('test was called successfully');
+  }, [test]); // Only re-run the effect if count changes
 
   /**
    * Navigation Header
