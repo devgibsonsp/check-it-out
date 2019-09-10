@@ -33,14 +33,14 @@ import axios from 'axios';
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
-  const [test, setTest] = useState({})
+  const [test, setTest] = useState({});
   const handleItemClick = (e, { name }) => setActiveItem({ tab: name });
 
   console.log(activeItem);
 
   async function getTest() {
     try {
-      const response = await axios.get('/quotes');
+      const response = await axios.get('/api/contacts');
       console.log("API response",response);
     } catch (error) {
       console.error(error);
