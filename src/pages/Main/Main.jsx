@@ -40,7 +40,7 @@ const Main = (props) => {
 
   async function getTest() {
     try {
-      const response = await axios.get('/api/contacts');
+      const response = await axios.get('/api/users');
       console.log("API response",response);
     } catch (error) {
       console.error(error);
