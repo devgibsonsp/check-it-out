@@ -5,11 +5,8 @@ import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import RegisterUser from './pages/RegisterUser/RegisterUser';
 import './styles/main.css';
-const App = () => {
 
-  function Users() {
-    return <h2>Users</h2>;
-  }
+const App = () => {
   return (
     <React.Fragment>
       <Router>

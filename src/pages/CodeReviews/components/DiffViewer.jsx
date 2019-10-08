@@ -32,6 +32,7 @@ const test = () => (
   oldValue={oldCode}
   newValue={newCode}
   splitView={true}
+  highlightLines={['L-3','L-4','L-5','R-5']}
 />
 )
 

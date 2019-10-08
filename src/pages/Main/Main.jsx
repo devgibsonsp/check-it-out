@@ -8,9 +8,10 @@ import {
   Button, Header, Image, Modal
 
 } from 'semantic-ui-react';
-import CodeReviews from '../CodeReviews/CodeReviews';
-
+import { Route, Link } from "react-router-dom";
 import axios from 'axios';
+import User from '../User/User';
+import CodeReviews from '../CodeReviews/CodeReviews';
 
 // const ModalModalExample = () => (
 //   <Modal trigger={<Button>Show Modal</Button>}>
@@ -80,7 +81,7 @@ const Main = (props) => {
           </Menu.Item>
           <Dropdown icon='setting' item text='Settings'>
             <Dropdown.Menu>
-              <Dropdown.Item icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>props.history.push('/users')} icon='user' text='Account' />
               <Dropdown.Item onClick={()=>props.history.push('/')} icon='sign out' text='Sign Out' />
             </Dropdown.Menu>
           </Dropdown>
@@ -88,6 +89,9 @@ const Main = (props) => {
       </Menu>
     </Grid.Column >
   )
+  // ********
+
+  // I need to change this so that main is just the layout
 
   return (
     <Grid stackable columns='equal'>
@@ -95,7 +99,8 @@ const Main = (props) => {
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
-        <CodeReviews/>
+        <Route path="/main" component={CodeReviews} />
+        <Route path="/users" component={CodeReviews} />
       </Grid.Row>
     </Grid>
 

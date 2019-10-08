@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  Grid, 
-  Segment,
-  Header,
-  Divider,
-} from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import DiffViewer from './components/DiffViewer';
 import QuestionViewer from './components/QuestionViewer';
 import CommentViewer from './components/CommentViewer';
@@ -23,7 +18,6 @@ const CodeReviews = (props) => {
         </Grid.Column>
     </React.Fragment>
   )
-
 }
 
 export default CodeReviews;
