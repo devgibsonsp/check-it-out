@@ -57,7 +57,7 @@ const Login = (props) => {
               onChange={handleChange}
             />
             <Form.Field color={`blue`} fluid size='large' control={Button}>Submit</Form.Field>
-            <Button  onClick={()=>props.history.push('/main')}>
+            <Button  onClick={()=>props.history.push('/main/account')}>
               Login
           </Button>
           </Segment>

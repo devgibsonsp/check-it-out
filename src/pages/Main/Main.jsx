@@ -10,8 +10,8 @@ import {
 } from 'semantic-ui-react';
 import { Route, Link } from "react-router-dom";
 import axios from 'axios';
-import User from '../User/User';
-import CodeReviews from '../CodeReviews/CodeReviews';
+import Account from 'pages/Account/Account';
+import CodeReviews from 'pages/CodeReviews/CodeReviews';
 
 // const ModalModalExample = () => (
 //   <Modal trigger={<Button>Show Modal</Button>}>
@@ -39,20 +39,21 @@ const Main = (props) => {
 
   console.log(activeItem);
 
-  async function getTest() {
-    try {
-      const response = await axios.get('/api/users');
-      console.log("API response",response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  // async function getTest() {
+  //   try {
+  //     const response = await axios.get('/api/users');
+  //     console.log("API response",response);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(() => {
-    getTest();
     console.log('test was called successfully');
-  }, [test]); // Only re-run the effect if count changes
+  }, []); // Only re-run the effect if count changes
 
+ //******************** */
+  // This should be moved into a subcomponent of main
   /**
    * Navigation Header
    */
@@ -81,7 +82,7 @@ const Main = (props) => {
           </Menu.Item>
           <Dropdown icon='setting' item text='Settings'>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={()=>props.history.push('/users')} icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>props.history.push('/main/account')} icon='user' text='Account' />
               <Dropdown.Item onClick={()=>props.history.push('/')} icon='sign out' text='Sign Out' />
             </Dropdown.Menu>
           </Dropdown>
@@ -99,8 +100,8 @@ const Main = (props) => {
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
-        <Route path="/main" component={CodeReviews} />
-        <Route path="/users" component={CodeReviews} />
+        <Route path="/main/codeReviews" component={CodeReviews} />
+        <Route path="/main/account" component={Account} />
       </Grid.Row>
     </Grid>
 
