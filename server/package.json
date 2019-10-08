@@ -1,12 +1,12 @@
 {
-  "name": "resthub2",
+  "name": "express-server",
   "version": "2.0.0",
   "description": "A Node App demonstrating simple RESTFul API implementation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "API",
@@ -16,7 +16,7 @@
     "mongodb",
     "express"
   ],
-  "author": "David Inyang-Etoh",
+  "author": "Steven Gibson",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
