@@ -6,6 +6,9 @@ import Main from 'pages/Main/Main';
 import RegisterUser from 'pages/RegisterUser/RegisterUser';
 import 'styles/main.css';
 
+// Replace styled component here with 
+
+
 const App = () => {
   return (
     <React.Fragment>

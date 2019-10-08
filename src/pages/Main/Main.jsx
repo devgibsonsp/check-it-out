@@ -76,6 +76,11 @@ const Main = (props) => {
           active={activeItem.tab === 'popularQuestions'}
           onClick={handleItemClick}
         />
+       <Menu.Item
+          name='demoPathToCodeReview'
+          active={activeItem.tab === 'demoPathToCodeReview'}
+          onClick={()=>props.history.push('/main/codeReviews')}
+        />
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
@@ -83,6 +88,7 @@ const Main = (props) => {
           <Dropdown icon='setting' item text='Settings'>
             <Dropdown.Menu>
               <Dropdown.Item onClick={()=>props.history.push('/main/account')} icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>null} icon='sliders horizontal' text='Preferences' />
               <Dropdown.Item onClick={()=>props.history.push('/')} icon='sign out' text='Sign Out' />
             </Dropdown.Menu>
           </Dropdown>
