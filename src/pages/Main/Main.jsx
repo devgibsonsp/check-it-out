@@ -59,7 +59,7 @@ const Main = (props) => {
    */
   const navHeader = () => (
     <Grid.Column>
-      <Menu>
+      <Menu stackable>
         <Menu.Item
           header
           name='checkItOut'

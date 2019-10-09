@@ -10,12 +10,12 @@ const QuestionViewer = (props) => {
 
   return (
     <Segment.Group raised>
-    <Segment>
-      <Header as='h1'>What is the deal with this?</Header>
-    </Segment>
-    <Segment> 
-      {fakeData}
-    </Segment>
+      <Segment>
+        <Header as='h1'>What is the deal with this?</Header>
+      </Segment>
+      <Segment> 
+        {fakeData}
+      </Segment>
     </Segment.Group>
   )
 }
