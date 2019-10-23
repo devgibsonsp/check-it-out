@@ -12,7 +12,7 @@ import {
 const fakeChat = () => (
   <Comment.Group>
     <Comment>
-      <Comment.Avatar as='a' src={require('../../../static/images/generic-avatar.jpg')} />
+      <Comment.Avatar as='a' src={require('static/images/generic-avatar.jpg')} />
       <Comment.Content>
         <Comment.Author>Joe</Comment.Author>
         <Comment.Metadata>
@@ -34,7 +34,7 @@ const fakeChat = () => (
     </Comment>
 
     <Comment>
-      <Comment.Avatar as='a' src={require('../../../static/images/generic-avatar.jpg')} />
+      <Comment.Avatar as='a' src={require('static/images/generic-avatar.jpg')} />
       <Comment.Content>
         <Comment.Author>Steve</Comment.Author>
         <Comment.Metadata>

@@ -8,9 +8,10 @@ import {
   Button, Header, Image, Modal
 
 } from 'semantic-ui-react';
-import CodeReviews from '../CodeReviews/CodeReviews';
-
+import { Route, Link } from "react-router-dom";
 import axios from 'axios';
+import Account from 'pages/Account/Account';
+import CodeReviews from 'pages/CodeReviews/CodeReviews';
 
 // const ModalModalExample = () => (
 //   <Modal trigger={<Button>Show Modal</Button>}>
@@ -38,26 +39,27 @@ const Main = (props) => {
 
   console.log(activeItem);
 
-  async function getTest() {
-    try {
-      const response = await axios.get('/api/users');
-      console.log("API response",response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  // async function getTest() {
+  //   try {
+  //     const response = await axios.get('/api/users');
+  //     console.log("API response",response);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(() => {
-    getTest();
     console.log('test was called successfully');
-  }, [test]); // Only re-run the effect if count changes
+  }, []); // Only re-run the effect if count changes
 
+ //******************** */
+  // This should be moved into a subcomponent of main
   /**
    * Navigation Header
    */
   const navHeader = () => (
     <Grid.Column>
-      <Menu>
+      <Menu stackable>
         <Menu.Item
           header
           name='checkItOut'
@@ -74,13 +76,19 @@ const Main = (props) => {
           active={activeItem.tab === 'popularQuestions'}
           onClick={handleItemClick}
         />
+       <Menu.Item
+          name='demoPathToCodeReview'
+          active={activeItem.tab === 'demoPathToCodeReview'}
+          onClick={()=>props.history.push('/main/codeReviews')}
+        />
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
           <Dropdown icon='setting' item text='Settings'>
             <Dropdown.Menu>
-              <Dropdown.Item icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>props.history.push('/main/account')} icon='user' text='Account' />
+              <Dropdown.Item onClick={()=>null} icon='sliders horizontal' text='Preferences' />
               <Dropdown.Item onClick={()=>props.history.push('/')} icon='sign out' text='Sign Out' />
             </Dropdown.Menu>
           </Dropdown>
@@ -88,6 +96,9 @@ const Main = (props) => {
       </Menu>
     </Grid.Column >
   )
+  // ********
+
+  // I need to change this so that main is just the layout
 
   return (
     <Grid stackable columns='equal'>
@@ -95,7 +106,8 @@ const Main = (props) => {
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
-        <CodeReviews/>
+        <Route path="/main/codeReviews" component={CodeReviews} />
+        <Route path="/main/account" component={Account} />
       </Grid.Row>
     </Grid>
 
