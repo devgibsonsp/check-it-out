@@ -1,10 +1,9 @@
-var userRoutes = require('./userRoutes');
-// Initialize express router
-let router = require('express').Router();
-
+const userRoutes = require('./userRoutes');
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerConfig = require("../swaggerConfig");
+
+let router = require('express').Router();
 
 // Set default API response
 router.get('/', function (req, res) {
@@ -16,6 +15,8 @@ router.get('/', function (req, res) {
 
 router = userRoutes(router);
 
+
+// Set route for API documentation
 const specs = swaggerJsdoc(swaggerConfig);
 router.use("/docs", swaggerUi.serve);
 router.get("/docs", swaggerUi.setup(specs, { explorer: true }));
