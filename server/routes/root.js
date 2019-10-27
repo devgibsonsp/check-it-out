@@ -1,4 +1,5 @@
 const userRoutes = require('./userRoutes');
+const questionRoutes = require('./questionRoutes');
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerConfig = require("../swaggerConfig");
@@ -13,7 +14,9 @@ router.get('/', function (req, res) {
     });
 });
 
+// Setting up routes
 router = userRoutes(router);
+router = questionRoutes(router);
 
 
 // Set route for API documentation
