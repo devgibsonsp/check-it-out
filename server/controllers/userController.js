@@ -19,7 +19,7 @@ exports.index = function (req, res) {
 // Handle create user actions
 exports.new = function (req, res) {
     var user = new User();
-    user.firstName = req.body.firstName ? req.body.firstName : user.firstName;
+    user.firstName = req.body.userCode;
     user.lastName = req.body.lastName ? req.body.lastName : user.lastName;
     user.email = req.body.email;
     user.userName = req.body.userName;
