@@ -12,6 +12,8 @@ import { Route, Link } from "react-router-dom";
 import axios from 'axios';
 import Account from 'pages/Account/Account';
 import CodeReviews from 'pages/CodeReviews/CodeReviews';
+import QuestionForm from'pages/QuestionForm/QuestionForm';
+import QuestionModal from 'pages/Main/components/QuestionModal';
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
@@ -63,6 +65,9 @@ const Main = (props) => {
           onClick={()=>props.history.push('/main/codeReviews')}
         />
         <Menu.Menu position='right'>
+        <Menu.Item>
+          <Button color='blue' onClick={()=>props.history.push('/main/askQuestion')}>Ask Question</Button>
+          </Menu.Item>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
@@ -81,16 +86,16 @@ const Main = (props) => {
   return (
     <Grid stackable columns='equal'>
       <Grid.Row>
+        {QuestionModal()}
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
         <Route path="/main/codeReviews" component={CodeReviews} />
         <Route path="/main/account" component={Account} />
+        <Route path="/main/askQuestion" component={QuestionForm} />
       </Grid.Row>
     </Grid>
-
   )
-
 }
 
 export default Main;
