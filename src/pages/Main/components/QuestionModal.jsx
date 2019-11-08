@@ -1,4 +1,5 @@
-import React from 'react';
+import React  from 'react';
+import PropTypes from 'prop-types';
 import { 
   Button, 
   Modal,
@@ -16,7 +17,7 @@ import {
 const QuestionModal = (props) => {
 
   return (
-    <Modal open={true} dimmer={true} trigger={<Button>Show Modal</Button>}>
+    <Modal open={props.enabled} dimmer={true} trigger={<Button>Show Modal</Button>}>
       <Modal.Content>
         <Header>New Question</Header>
         <Divider />
@@ -57,8 +58,8 @@ const QuestionModal = (props) => {
             />
           } />
           <Button.Group floated='right'>
-          <Button color='blue' type='submit'>Submit</Button>
-          <Button basic color='red' icon>
+          <Button color='blue' type='submit' onClick={()=>props.toggle()}>Submit</Button>
+          <Button basic color='red' icon onClick={()=>props.toggle()}>
             <Icon name='cancel' />
           </Button>
           </Button.Group>
@@ -68,11 +69,15 @@ const QuestionModal = (props) => {
           trigger={
             <Checkbox label='enable chat support' toggle />
           } />
-          
         </Form>
       </Modal.Content>
     </Modal>
   )
+}
+
+QuestionModal.propTypes = {
+  enabled: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
 }
 
 export default QuestionModal;

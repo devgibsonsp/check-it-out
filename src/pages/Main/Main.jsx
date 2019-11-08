@@ -13,10 +13,13 @@ import axios from 'axios';
 import Account from 'pages/Account/Account';
 import CodeReviews from 'pages/CodeReviews/CodeReviews';
 import QuestionForm from'pages/QuestionForm/QuestionForm';
-import QuestionModal from 'pages/Main/components/QuestionModal';
+import QuestionSubmissionForm from 'pages/Main/components/QuestionSubmissionForm';
+
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
+  const [modalEnabled, setModalEnabled] = useState(false);
+
   const [test, setTest] = useState({});
   const handleItemClick = (e, { name }) => setActiveItem({ tab: name });
 
@@ -30,6 +33,7 @@ const Main = (props) => {
   //     console.error(error);
   //   }
   // }
+
 
   useEffect(() => {
     console.log('test was called successfully');
@@ -66,7 +70,7 @@ const Main = (props) => {
         />
         <Menu.Menu position='right'>
         <Menu.Item>
-          <Button color='blue' onClick={()=>props.history.push('/main/askQuestion')}>Ask Question</Button>
+          <Button color='blue' onClick={()=>{setModalEnabled(true)}}>Ask Question</Button>
           </Menu.Item>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
@@ -86,7 +90,7 @@ const Main = (props) => {
   return (
     <Grid stackable columns='equal'>
       <Grid.Row>
-        {QuestionModal()}
+        <QuestionSubmissionForm enabled={modalEnabled}/>
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
