@@ -32,6 +32,12 @@ const StepExampleGroup = () => (
         <Step.Title>Confirm Order</Step.Title>
       </Step.Content>
     </Step>
+    <Step disabled>
+      <Icon name='info' />
+      <Step.Content>
+        <Step.Title>Confirm Order</Step.Title>
+      </Step.Content>
+    </Step>
   </Step.Group>
 )
 
