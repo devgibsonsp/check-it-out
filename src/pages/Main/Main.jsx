@@ -12,9 +12,14 @@ import { Route, Link } from "react-router-dom";
 import axios from 'axios';
 import Account from 'pages/Account/Account';
 import CodeReviews from 'pages/CodeReviews/CodeReviews';
+import QuestionForm from'pages/QuestionForm/QuestionForm';
+import QuestionSubmissionForm from 'pages/Main/components/QuestionSubmissionForm';
+
 
 const Main = (props) => {
   const [activeItem, setActiveItem] = useState({})
+  const [modalEnabled, setModalEnabled] = useState(false);
+
   const [test, setTest] = useState({});
   const handleItemClick = (e, { name }) => setActiveItem({ tab: name });
 
@@ -28,6 +33,7 @@ const Main = (props) => {
   //     console.error(error);
   //   }
   // }
+
 
   useEffect(() => {
     console.log('test was called successfully');
@@ -63,6 +69,9 @@ const Main = (props) => {
           onClick={()=>props.history.push('/main/codeReviews')}
         />
         <Menu.Menu position='right'>
+        <Menu.Item>
+          <Button color='blue' onClick={()=>{setModalEnabled(true)}}>Ask Question</Button>
+          </Menu.Item>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
@@ -81,16 +90,16 @@ const Main = (props) => {
   return (
     <Grid stackable columns='equal'>
       <Grid.Row>
+        <QuestionSubmissionForm enabled={modalEnabled}/>
         {navHeader()}
       </Grid.Row>
       <Grid.Row>
         <Route path="/main/codeReviews" component={CodeReviews} />
         <Route path="/main/account" component={Account} />
+        <Route path="/main/askQuestion" component={QuestionForm} />
       </Grid.Row>
     </Grid>
-
   )
-
 }
 
 export default Main;

@@ -5,6 +5,7 @@ import {
   Button, 
   Header, 
   Segment,
+  Pagination,
 } from 'semantic-ui-react';
 
 import ReactDiffViewer from 'react-diff-viewer'
@@ -28,13 +29,26 @@ if(a === 10) {
 }`
 
 const test = () => (
-  <ReactDiffViewer
-    oldValue={oldCode}
-    newValue={newCode}
-    splitView={true}
-    highlightLines={['L-3','L-4','L-5','R-5']}
-  />
+  <React.Fragment>
+    <ReactDiffViewer
+      oldValue={oldCode}
+      newValue={newCode}
+      splitView={true}
+      highlightLines={['L-3','L-4','L-5','R-5']}
+    />
+    <Pagination
+      boundaryRange={0}
+      defaultActivePage={1}
+      ellipsisItem={null}
+      firstItem={null}
+      lastItem={null}
+      siblingRange={1}
+      totalPages={10}
+    />
+  </React.Fragment>
 )
+
+
 
 const panes = [
     { menuItem: 'All', render: () => <Segment raised>{test()}</Segment> },
